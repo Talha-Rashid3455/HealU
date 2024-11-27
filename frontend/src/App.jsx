@@ -1,13 +1,19 @@
-
-
-
-
+import React from "react";
+import { Route,Routes } from "react-router-dom";
+import Home from "./pages/Home";
 
 
 export default function App() {
   return (
-      <div className="h-screen flex items-center justify-center bg-gray-100">
-          <h1 className="text-4xl font-bold text-blue-600">Welcome to HealU!</h1>
+      <div className="h-screen flex items-center justify-center">
+          <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/Home" element={<Home/>} />
+            {/* <Route path="/Doctors" element={<Doctors/>} />
+            <Route path="/Nurses" element={<Nurses/>} />
+            <Route path="/Indoor Patients" element={<IndoorPatients/>} />
+            <Route path="/Outdoor Patients" element={<OutdoorPatients/>} /> */}
+          </Routes>
       </div>
   );
 }
