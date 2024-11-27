@@ -1,13 +1,20 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import ForgetPage from "./pages/ForgetPage";
 
-
-
-
-
-
-export default function App() {
-  return (
-      <div className="h-screen flex items-center justify-center bg-gray-100">
-          <h1 className="text-4xl font-bold text-blue-600">Welcome to HealU!</h1>
-      </div>
-  );
+function App() {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="/forget-password" element={<ForgetPage />} />
+                
+            </Routes>
+        </Router>
+    );
 }
+
+export default App;
