@@ -1,6 +1,6 @@
 import React from "react";
 
-const NurseComp = (props) => {
+const DoctorsComp = (props) => {
   return (
     <div className="relative  w-52 h-44 shadow-lg rounded-lg bg-white border-2">
       <div className="flex flex-col">
@@ -36,4 +36,4 @@ const NurseComp = (props) => {
   );
 };
 
-export default NurseComp;
+export default DoctorsComp;
