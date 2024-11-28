@@ -2,6 +2,8 @@ import React from "react";
 import { Route,Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Nurses from "./pages/Nurses";
+import Doctors from "./pages/Doctors";
+
 
 export default function App() {
   return (
@@ -12,6 +14,9 @@ export default function App() {
             {/* <Route path="/Doctors" element={<Doctors/>} /> */}
             <Route path="/Nurses" element={<Nurses/>} />
             {/* <Route path="/Indoor Patients" element={<IndoorPatients/>} />
+            <Route path="/Doctors" element={<Doctors/>} />
+            {/* <Route path="/Nurses" element={<Nurses/>} />
+            <Route path="/Indoor Patients" element={<IndoorPatients/>} />
             <Route path="/Outdoor Patients" element={<OutdoorPatients/>} /> */}
           </Routes>
       </div>
