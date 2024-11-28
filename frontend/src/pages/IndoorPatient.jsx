@@ -54,7 +54,7 @@ const IndoorPatient = () => {
 
           {/* Total Patients Count */}
           <div className="text-xl font-semibold text-gray-800 ml-10 ">
-            <p>Total Patients: {patientList.length}</p>
+            <p>Available Indoor Patients: {patientList.length}</p>
           </div>
 
           {/* Patient Visits List */}
