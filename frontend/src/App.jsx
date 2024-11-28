@@ -1,15 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import ForgetPage from "./pages/ForgetPage";
-import { Route,Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Nurses from "./pages/Nurses";
 import Doctors from "./pages/Doctors";
 
 
-export default function App() {
+function App() {
   return (
       <div className="h-screen flex items-center justify-center">
           <Routes>
