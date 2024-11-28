@@ -19,7 +19,8 @@ async def register_user(
     city:str = Form(...), 
     age:int = Form(...), 
     gender:str = Form(...), 
-    contact:str = Form(...), 
+    contact:str = Form(...),
+    designation = Form(...), 
     email:str = Form(...), 
     password:str = Form(...)
 ):
@@ -30,7 +31,7 @@ async def register_user(
 
     encrypted_password =get_hashed_password(password)
 
-    new_user = Users(name=name, city=city, age=age, gender=gender, contact=contact, email=email, hashed_password=encrypted_password)
+    new_user = Users(name=name, city=city, age=age, gender=gender, contact=contact, designation=designation, email=email, hashed_password=encrypted_password)
 
     session.add(new_user)
     session.commit()

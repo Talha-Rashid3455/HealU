@@ -12,6 +12,7 @@ class Users(Base):
     age = Column(Integer, nullable=False)
     gender = Column(String, nullable=False)
     contact = Column(String, nullable=False)
+    designation = Column(String, nullable=False)
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
 
