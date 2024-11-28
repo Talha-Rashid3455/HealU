@@ -1,4 +1,4 @@
-from  app.schemas.user import UserCreate, TokenSchema
+from  app.schemas.user import UserCreate, TokenSchema, UserRead
 from app.models.user import Users, TokenTable
 from fastapi import Depends, HTTPException, Form, status
 from sqlalchemy.orm import Session
@@ -7,7 +7,11 @@ from fastapi import APIRouter
 from app.crud.user import get_user_by_email
 from app.auth.utils import get_hashed_password
 from app.auth.utils import create_access_token,create_refresh_token,verify_password,get_hashed_password
-from app.crud.user import get_user_by_email
+from app.crud.user import(
+    get_user_by_email,
+    get_indoor_patients,
+) 
+from typing import List
 
 
 router = APIRouter()
@@ -40,7 +44,7 @@ async def register_user(
 
 
 @router.post('/login' ,response_model=TokenSchema)
-def login(
+async def login(
     session = Depends(get_session),
     email:str = Form(...),
     password:str = Form(...), 
@@ -66,3 +70,12 @@ def login(
         "refresh_token": refresh,
         "data": user,
     }
+
+@router.get("/get indoor patient", response_model=List[UserRead])
+async def getIndoorPatient(
+    session = Depends(get_session),
+):
+    users = get_indoor_patients(session)
+    if not users:
+        raise HTTPException(status_code=200, detail="No indoor patient")
+    return users
