@@ -11,13 +11,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/Home" element={<Home/>} />
-            {/* <Route path="/Doctors" element={<Doctors/>} /> */}
-            <Route path="/Nurses" element={<Nurses/>} />
-            {/* <Route path="/Indoor Patients" element={<IndoorPatients/>} />
             <Route path="/Doctors" element={<Doctors/>} />
-            {/* <Route path="/Nurses" element={<Nurses/>} />
-            <Route path="/Indoor Patients" element={<IndoorPatients/>} />
-            <Route path="/Outdoor Patients" element={<OutdoorPatients/>} /> */}
+            <Route path="/Nurses" element={<Nurses/>} />
+            
           </Routes>
       </div>
   );
