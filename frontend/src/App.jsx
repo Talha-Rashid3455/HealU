@@ -1,6 +1,7 @@
 import React from "react";
 import { Route,Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import Doctors from "./pages/Doctors";
 
 
 export default function App() {
@@ -9,8 +10,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/Home" element={<Home/>} />
-            {/* <Route path="/Doctors" element={<Doctors/>} />
-            <Route path="/Nurses" element={<Nurses/>} />
+            <Route path="/Doctors" element={<Doctors/>} />
+            {/* <Route path="/Nurses" element={<Nurses/>} />
             <Route path="/Indoor Patients" element={<IndoorPatients/>} />
             <Route path="/Outdoor Patients" element={<OutdoorPatients/>} /> */}
           </Routes>
