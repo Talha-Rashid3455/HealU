@@ -2,7 +2,7 @@ from jwt.exceptions import InvalidTokenError
 from fastapi import  HTTPException
 from fastapi import Request, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from backend.app.auth.utils import (
+from app.auth.utils import (
     ALGORITHM,
     JWT_SECRET_KEY
 )
