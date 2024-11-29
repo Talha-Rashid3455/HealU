@@ -1,3 +1,4 @@
+import React from "react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";  // Import useNavigate for programmatic navigation
 import heartLogo from "../assets/heart.png"; // Heart logo
@@ -57,6 +58,7 @@ const ForgetPage = () => {
                         width: "100%",
                         maxWidth: "400px",
                     }}
+
                     onSubmit={handleSubmit}  // Handle form submission
                 >
                     <h1
@@ -85,6 +87,7 @@ const ForgetPage = () => {
                         </label>
                         <input
                             id="email"
+                            type="text"
                             type="email"  // Change to email type for better validation
                             placeholder="Enter your email"
                             style={{

@@ -1,5 +1,6 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, DateTime,Boolean
 from app.database import Base
+import datetime
 
 
 class Users(Base):
@@ -11,6 +12,14 @@ class Users(Base):
     age = Column(Integer, nullable=False)
     gender = Column(String, nullable=False)
     contact = Column(String, nullable=False)
+    designation = Column(String, nullable=False)
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
 
+class TokenTable(Base):
+    __tablename__ = "token"
+    user_id = Column(Integer)
+    access_toke = Column(String(450), primary_key=True)
+    refresh_toke = Column(String(450),nullable=False)
+    status = Column(Boolean)
+    created_date = Column(DateTime, default=datetime.datetime.now)
