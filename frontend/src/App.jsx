@@ -1,14 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import ForgetPage from "./pages/ForgetPage";
 import Home from "./pages/Home";
 import Nurses from "./pages/Nurses";
 import Doctors from "./pages/Doctors";
 import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
-import ForgetPage from "./pages/ForgetPage";
 import IndoorPatient from "./pages/IndoorPatient";
 
 function App() {
