@@ -1,8 +1,20 @@
 import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";  // Import useNavigate for programmatic navigation
 import heartLogo from "../assets/heart.png"; // Heart logo
 import doctorsImage from "../assets/doc.png"; // Doctors illustration
 
 const ForgetPage = () => {
+    const [email, setEmail] = useState("");  // State to manage email input
+    const navigate = useNavigate();  // Hook to navigate to Login page on submit
+
+    const handleSubmit = (e) => {
+        e.preventDefault();  // Prevent the default form submission
+        // Handle form logic here (e.g., validating email, making API calls, etc.)
+        // After successful handling, navigate to the login page
+        navigate("/login");
+    };
+
     return (
         <div
             style={{
@@ -46,6 +58,8 @@ const ForgetPage = () => {
                         width: "100%",
                         maxWidth: "400px",
                     }}
+
+                    onSubmit={handleSubmit}  // Handle form submission
                 >
                     <h1
                         style={{
@@ -74,6 +88,7 @@ const ForgetPage = () => {
                         <input
                             id="email"
                             type="text"
+                            type="email"  // Change to email type for better validation
                             placeholder="Enter your email"
                             style={{
                                 width: "100%",
@@ -85,6 +100,9 @@ const ForgetPage = () => {
                                 fontSize: "16px",
                                 outline: "none",
                             }}
+                            value={email}  // Bind value to state
+                            onChange={(e) => setEmail(e.target.value)}  // Update state on change
+                            required  // Make the input field mandatory
                         />
                     </div>
                     {/* Submit Button */}
