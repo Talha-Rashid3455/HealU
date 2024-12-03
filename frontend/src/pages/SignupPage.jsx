@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
-import HeartLogo from "../components/HeartLogo"; // Import HeartLogo component
-import DoctorsImage from "../components/DoctorsImage"; // Import DoctorsImage component
+import { useNavigate } from "react-router-dom"; 
+import HeartLogo from "../components/HeartLogo"; 
+import DoctorsImage from "../components/DoctorsImage"; 
 
 const SignupPage = () => {
-    const navigate = useNavigate(); // Initialize the useNavigate hook
+    const navigate = useNavigate(); 
     const [formData, setFormData] = useState({
         name: "",
         city: "",
@@ -14,7 +14,7 @@ const SignupPage = () => {
         email: "",
         password: "",
         confirmPassword: "",
-        designation: "", // New field for designation
+        designation: "", 
     });
 
     // Handle input change
@@ -24,14 +24,34 @@ const SignupPage = () => {
     };
 
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit =  async (e) => {
         e.preventDefault();
-        // Here you can handle form submission (e.g., API call)
-        // For now, just log the form data
-        console.log("Form submitted:", formData);
 
-        // Redirect to the login page after successful registration
-        navigate("/login");
+        console.log("Form submitted:", formData);
+        const Data = new FormData();
+        Data.append("name", formData.name);
+        Data.append("city", formData.city);
+        Data.append("age", formData.age);
+        Data.append("gender", formData.gender);
+        Data.append("contact", formData.contact);
+        Data.append("designation", formData.designation);
+        Data.append("email", formData.email);
+        Data.append("password", formData.confirmPassword);
+        
+        const response = await fetch("http://localhost:8000/register", {
+            method: "POST",
+            body: Data,
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log("Registration successful:", result);
+            navigate("/login");
+        } else {
+            const errorData = await response.json();
+            alert(`Registration failed: ${errorData.detail}`);
+        }
+        
     };
 
     return (
@@ -206,6 +226,7 @@ const SignupPage = () => {
                     <div className="mt-6">
                         <button
                             type="submit"
+                            onClick={handleSubmit} 
                             className="w-full px-4 py-2 text-sm font-semibold text-white bg-teal-500 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
                         >
                             Register
