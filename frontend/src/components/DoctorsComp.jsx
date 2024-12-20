@@ -15,16 +15,16 @@ const DoctorsComp = (props) => {
         </div>  
         {/* Content */}
         <div className="flex flex-row">
-          <div className="flex flex-col">
-            <h1 className="text-blue-600 text-xl font-serif">{props.Name}</h1>
+          <div className="flex flex-col ml-2">
+            <h1 className="text-blue-600 text-xl font-serif ">{props.Name}</h1>
             <h1 className="text-yellow-400 text-sl font-bold">
               {props.Specialization}
             </h1>
             <h1 className="text-yellow-400 text-sm">
-            {props.Qualifications ? props.Qualifications.join(", ") : ""}
+            {props.Qualifications}
             </h1>
           </div>
-          <div className="flex flex-col absolute left-32 top-28">
+          <div className="flex flex-col absolute left-32 top-32">
           <h1 className="text-blue-600 text-sm">{props.AvailabilityDays}</h1>
             <h1 className="text-blue-600 text-sm">{props.AvailabilityTime}</h1>
             

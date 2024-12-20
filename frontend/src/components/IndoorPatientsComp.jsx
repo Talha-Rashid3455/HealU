@@ -1,20 +1,22 @@
 import React from "react";
+import DoctorPic from "../assets/DoctorPic.png"
 
 const IndoorPatientsComp = ({
-  ProfilePicture,
   Name,
-  AppointmentTime,
-  VisitReason,
-  VisitedCount,
-  IsNewPatient,
+  City,
+  Age,
+  Gender,
+  Contact,
+  Email,
 }) => {
+
   return (
     <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200 w-72">
       <div className="flex flex-col items-center">
         {/* Profile Picture */}
         <img
           className="h-24 w-24 rounded-full object-cover mb-4 border-4 border-teal-500"
-          src={ProfilePicture}
+          src={DoctorPic}
           alt="Patient Profile"
         />
 
@@ -23,23 +25,23 @@ const IndoorPatientsComp = ({
 
         {/* Appointment Time */}
         <p className="text-sm text-gray-500 text-center">
-          <strong>Appointment Time:</strong> {AppointmentTime}
+          <strong>City:</strong> {City}
         </p>
 
         {/* Reason for Visit */}
         <p className="mt-2 text-sm text-gray-600 text-center">
-          <strong>Reason for Visit:</strong> {VisitReason}
+          <strong>Age:</strong> {Age}
         </p>
 
         {/* Visited Count */}
         <p className="mt-2 text-sm text-gray-600 text-center">
-          <strong>Visited: </strong> {VisitedCount} times
+          <strong>Gender: </strong> {Gender} 
         </p>
 
         {/* New Patient Badge */}
-        {IsNewPatient && (
+        {Email && (
           <div className="mt-2 bg-teal-500 text-white text-xs py-1 px-3 rounded-full">
-            New Patient
+            {Email}
           </div>
         )}
       </div>
