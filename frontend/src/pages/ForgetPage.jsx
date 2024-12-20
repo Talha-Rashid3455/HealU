@@ -86,7 +86,6 @@ const ForgetPage = () => {
                         </label>
                         <input
                             id="email"
-                            type="text"
                             type="email"  // Change to email type for better validation
                             placeholder="Enter your email"
                             style={{

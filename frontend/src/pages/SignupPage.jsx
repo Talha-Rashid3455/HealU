@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; 
 import HeartLogo from "../components/HeartLogo"; 
 import DoctorsImage from "../components/DoctorsImage"; 
+import AddDoctor from "./AddDoctor";
 
 const SignupPage = () => {
     const navigate = useNavigate(); 
@@ -221,7 +222,8 @@ const SignupPage = () => {
                             <option value="Outdoor Patient">Outdoor Patient</option>
                         </select>
                     </div>
-
+                    {formData.designation==="Doctor" &&  <AddDoctor /> }
+                    {formData.designation==="Nurse" &&  <AddDoctor /> }
                     {/* Register Button */}
                     <div className="mt-6">
                         <button
