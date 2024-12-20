@@ -21,7 +21,7 @@ const NurseComp = (props) => {
               {props.Specialization}
             </h1>
             <h1 className="text-yellow-400 text-sm">
-            {props.Qualifications ? props.Qualifications.join(", ") : ""}
+            {props.Qualifications}
             </h1>
           </div>
           <div className="flex flex-col absolute left-32 top-28">

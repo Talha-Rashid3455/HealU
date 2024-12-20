@@ -4,32 +4,25 @@ import NavBar from "../components/NavBar";
 import IndoorPatientsComp from "../components/IndoorPatientsComp";
 import logo5 from "../assets/logo5.png";
 import DoctorPic from "../assets/DoctorPic.png"; // Assuming you're using DoctorPic as the profile image
+import { useState,useEffect } from "react";
+import axios from "axios";
 
 const IndoorPatient = () => {
-  // Sample data for patient visits with visited count and new patient flag
-  const patientVisit = {
-    ProfilePicture: DoctorPic,
-    Name: "John Doe",
-    AppointmentTime: "10:00 AM - 11:00 AM",
-    VisitReason: "Routine Checkup",
-    VisitedCount: 5, // Number of visits
-    IsNewPatient: false, // Boolean to show if the patient is new
-  };
+  const [data,setData] = useState([]);
+  useEffect(() => {
+    // Call the FastAPI endpoint
+    axios
+      .get("http://localhost:8000/get_data") // Replace with your FastAPI URL
+      .then((response) => {
+        setData(response.data); // Access the "message" field
+        console.log(response.data)
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
 
-  // Sample data for multiple patient visits
-  const patientList = [];
-  for (let i = 0; i <= 20; i++) {
-    // Dynamically changing visited count and new patient flag for the demo
-    const isNewPatient = i % 2 === 0;
-    const visitedCount = isNewPatient ? 1 : Math.floor(Math.random() * 10);
 
-    patientList.push({
-      ...patientVisit,
-      id: i,
-      IsNewPatient: isNewPatient,
-      VisitedCount: visitedCount,
-    });
-  }
 
   return (
     <div className="flex-1 relative bg-gradient-to-r from-[#0098B9] to-[#003844] h-screen">
@@ -54,20 +47,20 @@ const IndoorPatient = () => {
 
           {/* Total Patients Count */}
           <div className="text-xl font-semibold text-gray-800 ml-10 ">
-            <p>Available Indoor Patients: {patientList.length}</p>
+          <p>Available Outdoor Patients: {data.filter(patient => patient.designation === "indoor patient").length}</p>
           </div>
 
           {/* Patient Visits List */}
           <div className="left-40 ml-10 grid grid-cols-3 overflow-y-scroll h-96 auto-rows-auto  gab-x-4 gap-y-6">
-            {patientList.map((patient) => (
+            {data.map((patient) => ( patient.designation==="indoor patient" &&
               <IndoorPatientsComp
                 key={patient.id}
-                ProfilePicture={patient.ProfilePicture}
-                Name={patient.Name}
-                AppointmentTime={patient.AppointmentTime}
-                VisitReason={patient.VisitReason}
-                VisitedCount={patient.VisitedCount}
-                IsNewPatient={patient.IsNewPatient}
+                Name={patient.name}
+                City={patient.city}
+                Age={patient.age}
+                Gender={patient.gender}
+                Contact={patient.contact}
+                Email={patient.email}
               />
             ))}
           </div>
